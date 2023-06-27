@@ -205,7 +205,7 @@ def compare_versions(version1, version2) -> bool:
 
     return v1_comp - v2_comp
 
-def check_compat(extension_names):
+def check_compat(extension_names) -> list(dict):
     """
     Checks if the versions of the VSCode extensions will work with the supplied version of VSCode.
     This method opens each VSIX file directory within the ext_dir, ingests the package.json file as a dictionary, reads the
@@ -216,6 +216,10 @@ def check_compat(extension_names):
 
     Args:
         extension_names list(str): a list of all the extension names that you want to determine compatibility for in the {publisher}.{package} format
+        
+    Returns 
+        compatible_extensions (list(dict)): a list of dictionaries of the compatible extensions
+
     """
     compatible_extensions = []
 
