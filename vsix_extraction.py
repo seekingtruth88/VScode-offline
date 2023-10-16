@@ -11,9 +11,10 @@ import subprocess
 import re
 import requests
 from tqdm import tqdm
+from typing import List
 
 override = False             # use this to override the check on whether the compatible_packages json has already been made.
-code_version = '1.77.3'      # change this to the version of VScode you are targeting for offline operation.
+code_version = '1.83.1'      # change this to the version of VScode you are targeting for offline operation.
 output_dir = './extensions'  # change this to wherever you want to save out the compatible extension VSIX files.
 comparison_operators = {
         "<": -1,
@@ -205,7 +206,7 @@ def compare_versions(version1, version2) -> bool:
 
     return v1_comp - v2_comp
 
-def check_compat(extension_names) -> list(dict):
+def check_compat(extension_names) -> List[dict]:
     """
     Checks if the versions of the VSCode extensions will work with the supplied version of VSCode.
     This method opens each VSIX file directory within the ext_dir, ingests the package.json file as a dictionary, reads the
